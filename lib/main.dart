@@ -33,14 +33,17 @@ class MyHomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final generatorPage = useMemoized(() => GeneratorPage());
+    final favoritesPage = useMemoized(() => FavoritesPage());
+
     final selectedIndex = useState(0);
     Widget page;
     switch (selectedIndex.value) {
       case 0:
-        page = GeneratorPage();
+        page = generatorPage;
         break;
       case 1:
-        page = FavoritesPage();
+        page = favoritesPage;
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
